@@ -15,6 +15,10 @@ jobs:
       - node/install:
           node-version: '14.15'
       - checkout
+      - aws-cli/setup:
+          aws-access-key-id: $AWS_ACCESS_KEY_ID
+          aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
+          aws-region: $AWS_REGION
       # Use root level package.json to install dependencies in the frontend app
       - run:
           name: Install Front-End Dependencies
@@ -40,10 +44,6 @@ jobs:
           command: |
             npm run frontend:build
       # TODO: Build the backend API      
-      - aws-cli/setup:
-          aws-access-key-id: $AWS_ACCESS_KEY_ID
-          aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
-          aws-region: $AWS_REGION
       - eb/setup
       - aws-cli/setup
       - checkout
