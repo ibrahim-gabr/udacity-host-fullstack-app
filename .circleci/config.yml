@@ -54,7 +54,7 @@ jobs:
     steps:
       - eb/setup
       - aws-cli/setup
-      - eb/deploy:
+      - run:
           name: Deploy Backend
           command: npm run api:deploy
 
