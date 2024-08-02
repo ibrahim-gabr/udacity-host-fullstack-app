@@ -40,6 +40,9 @@ jobs:
           command: |
             npm run frontend:build
       # TODO: Build the backend API      
+      - eb/setup
+      - aws-cli/setup
+      - checkout
       - run:
           name: API initiate elastic beanstalk
           command: |
@@ -56,9 +59,6 @@ jobs:
     steps:
       - node/install:
           node-version: '14.15'
-      - eb/setup
-      - aws-cli/setup
-      - checkout
       - run:
           name: Deploy App
           # TODO: Install, build, deploy in both apps
