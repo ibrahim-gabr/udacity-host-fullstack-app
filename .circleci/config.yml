@@ -23,10 +23,6 @@ jobs:
           name: List Directory Contents
           command: ls -la
       - run:
-          name: Install Front-End Dependencies manually
-          command: |
-            cd ./udagram/udagram-frontend && ls -al && npm install -f
-      - run:
           name: Install Front-End Dependencies
           command: |
             echo "NODE --version" 
