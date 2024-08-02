@@ -52,11 +52,17 @@ jobs:
       aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
       aws-region: $AWS_REGION
     steps:
+      - node/install:
+          node-version: '14.15'
+      - checkout
       - eb/setup
       - aws-cli/setup
       - run:
           name: Deploy Backend
           command: npm run api:deploy
+      - run:
+          name: Deploy Frontend
+          command: npm run frontend:deploy
 
 workflows:
   udagram:
